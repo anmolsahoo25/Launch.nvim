@@ -1,25 +1,24 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  dependencies = { { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true } },
+  dependencies = { 
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    { "nvim-lua/plenary.nvim" },
+  },
 }
 
 function M.config()
-  local wk = require "which-key"
-  wk.register {
-    ["<leader>bb"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
-    ["<leader>fb"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    ["<leader>fc"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find files" },
-    ["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-    ["<leader>ft"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-    ["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
-    ["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
-    ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
-  }
+
+  local keymap = vim.keymap.set
+  local opts = { noremap = true, silent = true }
+
+  keymap("n", "<leader>f", "<cmd>Telescope git_files<cr>", opts)
+  keymap("n", "<leader>g", "<cmd>Telescope grep_string<cr>", opts)
+  keymap("n", "<leader>l", "<cmd>Telescope live_grep<cr>", opts)
+  keymap("n", "<leader>p", "<cmd>Telescope buffers<cr>", opts)
+  keymap("n", "<leader>q", "<cmd>Telescope diagnostics<cr>", opts)
 
   local icons = require "user.icons"
   local actions = require "telescope.actions"
-
 
   require("telescope").setup {
     defaults = {
@@ -75,7 +74,7 @@ function M.config()
       buffers = {
         theme = "dropdown",
         previewer = false,
-        initial_mode = "normal",
+        initial_mode = "insert",
         mappings = {
           i = {
             ["<C-d>"] = actions.delete_buffer,
@@ -93,6 +92,12 @@ function M.config()
 
       colorscheme = {
         enable_preview = true,
+      },
+
+      diagnostics = {
+        enable_preview = true,
+        initial_mode = "normal",
+        theme = "dropdown"
       },
 
       lsp_references = {

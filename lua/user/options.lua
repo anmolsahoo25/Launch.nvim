@@ -10,7 +10,7 @@ vim.opt.mouse = "a" -- allow the mouse to be used in neovim
 vim.opt.pumheight = 10 -- pop up menu height
 vim.opt.pumblend = 10
 vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 1 -- always show tabs
+vim.opt.showtabline = 0 -- always show tabs
 vim.opt.smartcase = true -- smart case
 vim.opt.smartindent = true -- make indenting smarter again
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
@@ -37,8 +37,7 @@ vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 vim.opt.title = false
--- colorcolumn = "80",
--- colorcolumn = "120",
+vim.opt.colorcolumn = "80"
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append {
   stl = " ",
@@ -51,4 +50,3 @@ vim.cmd [[set iskeyword+=-]]
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
-

@@ -14,10 +14,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
   spec = LAZY_PLUGIN_SPEC,
   install = {
-    colorscheme = { "darkplus", "default" },
+    colorscheme = { "catppuccin-frappe", "default" },
   },
   ui = {
     border = "rounded",
+  },
+  dev = {
+    path = "~/code/nvim-plugins"
   },
   change_detection = {
     enabled = true,

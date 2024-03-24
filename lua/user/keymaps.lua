@@ -1,47 +1,23 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- Unbind tilde
+keymap("n", "`", "", opts)
+
+-- Rebind leader
 keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-keymap("n", "<C-i>", "<C-i>", opts)
+-- Quick keybinds
+keymap("n", "<leader>w", ":w!<CR>", opts)
 
--- Better window navigation
-keymap("n", "<m-h>", "<C-w>h", opts)
-keymap("n", "<m-j>", "<C-w>j", opts)
-keymap("n", "<m-k>", "<C-w>k", opts)
-keymap("n", "<m-l>", "<C-w>l", opts)
-keymap("n", "<m-tab>", "<c-6>", opts)
-
-keymap("n", "n", "nzz", opts)
-keymap("n", "N", "Nzz", opts)
-keymap("n", "*", "*zz", opts)
-keymap("n", "#", "#zz", opts)
-keymap("n", "g*", "g*zz", opts)
-keymap("n", "g#", "g#zz", opts)
-
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
-keymap("x", "p", [["_dP]])
-
-vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]]
-vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]]
--- vim.cmd [[:amenu 10.120 mousemenu.-sep- *]]
-
-vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
-vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
-
--- more good
-keymap({ "n", "o", "x" }, "<s-h>", "^", opts)
-keymap({ "n", "o", "x" }, "<s-l>", "g_", opts)
-
--- tailwind bearable to work with
-keymap({ "n", "x" }, "j", "gj", opts)
-keymap({ "n", "x" }, "k", "gk", opts)
-keymap("n", "<leader>w", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", opts)
-
-
-vim.api.nvim_set_keymap('t', '<C-;>', '<C-\\><C-n>', opts)
+-- Tab navigation
+keymap("n", "<leader>1", "1gt", opts)
+keymap("n", "<leader>2", "2gt", opts)
+keymap("n", "<leader>3", "3gt", opts)
+keymap("n", "<leader>4", "4gt", opts)
+keymap("n", "<leader>5", "5gt", opts)
+keymap("n", "<C-p>", ":tabnext<cr>", opts)
+keymap("n", "<C-o>", ":tabprev<cr>", opts)
+keymap("n", "<C-n>", ":tabnew<cr>", opts)
