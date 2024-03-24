@@ -9,9 +9,6 @@ keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Quick keybinds
-keymap("n", "<leader>w", ":w!<CR>", opts)
-
 -- Tab navigation
 keymap("n", "<leader>1", "1gt", opts)
 keymap("n", "<leader>2", "2gt", opts)

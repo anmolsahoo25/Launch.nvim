@@ -12,7 +12,6 @@ function M.config()
   local opts = { noremap = true, silent = true }
 
   keymap("n", "<leader>f", "<cmd>Telescope git_files<cr>", opts)
-  keymap("n", "<leader>g", "<cmd>Telescope grep_string<cr>", opts)
   keymap("n", "<leader>l", "<cmd>Telescope live_grep<cr>", opts)
   keymap("n", "<leader>p", "<cmd>Telescope buffers<cr>", opts)
   keymap("n", "<leader>q", "<cmd>Telescope diagnostics<cr>", opts)
