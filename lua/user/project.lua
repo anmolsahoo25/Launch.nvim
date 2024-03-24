@@ -14,13 +14,13 @@ function M.config()
     exclude_dirs = {},
     show_hidden = false,
     silent_chdir = true,
-    scope_chdir = "global",
+    scope_chdir = "tab",
   }
 
   local opts = { noremap = true, silent = true }
   local keymap = vim.api.nvim_set_keymap
 
-  keymap("n", "<c-p>", ":lua require('telescope').extensions.projects.projects()<CR>", opts)
+  keymap("n", "<leader>P", ":lua require('telescope').extensions.projects.projects()<CR>", opts)
 end
 
 return M
