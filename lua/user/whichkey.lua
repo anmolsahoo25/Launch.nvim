@@ -5,6 +5,7 @@ local M = {
 function M.config()
   local mappings = {
     w = { ":w!<CR>", "Save" },
+    Q = { ":wqall!<CR>", "Quit all" }
   }
 
   local which_key = require "which-key"
